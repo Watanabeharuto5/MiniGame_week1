@@ -1,25 +1,81 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
   void main(){
-    runApp(const MyApp());
+    runApp( MyApp());
   }
-class MyMiniGame extends StatelessWidget {
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fruit Catcher Game',
-      home: const GameSreen(),
+      home: const GameScreen(),
     );
   }
 }
-class GameSreen extends StatelessWidget {
+
+ class GameScreen extends StatefulWidget {
+  const GameScreen({super.key});
+
   @override
-  Widget build(BuildContext context) {
-  return Scaffold(
-    body: Center(
-      child: Text('Game akan ditampilkan disini'),
-    ),
-  );
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
+
+  @override
+  
+  void initState() {
+    super.initState();
   }
 
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Positioned(
+            top: 50,
+            left: 20,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: const Text(
+                'Score: 1',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight:  FontWeight.bold,
+                ),
+              ),
+            ),
+
+          ),
+          // penambahan code
+          //untuk gambar icon
+          Positioned(
+            top: 50,
+            right: 20,
+            child: Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.music_note, color: Colors.black,),
+                  onPressed: (){},
+                ),
+                IconButton(icon: const Icon(Icons.volume_up, color: Colors.black),
+                  onPressed: (){},
+                   ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+          
+  }
 }
