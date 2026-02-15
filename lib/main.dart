@@ -40,7 +40,7 @@ class _GameScreenState extends State<GameScreen> {
     game.onRemove();
     super.dispose();
   }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -100,4 +100,5 @@ class _GameScreenState extends State<GameScreen> {
       ),
     );
   }
+
 }
