@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:minigame_/game/fruit_catcher_game.dart';
+import 'package:minigame_/game/managers/audio_manager.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AudioManager().initialize();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -74,11 +77,15 @@ class _GameScreenState extends State<GameScreen> {
               children: [
                 IconButton(
                   icon: const Icon(Icons.music_note, color: Colors.black),
-                  onPressed: () {},
+                  onPressed: () {
+                    AudioManager().toggleMusic()  ;
+                  },
                 ),
                 IconButton(
                   icon: const Icon(Icons.volume_up, color: Colors.black),
-                  onPressed: () {},
+                  onPressed: () {
+                    AudioManager().toggleSfx();
+                  },
                 ),
               ],
             ),
