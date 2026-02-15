@@ -1,21 +1,17 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-  void main(){
-    runApp( MyApp());
-  }
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fruit Catcher Game',
-      home: const GameScreen(),
-    );
+    return MaterialApp(title: 'Fruit Catcher Game', home: const GameScreen());
   }
 }
 
- class GameScreen extends StatefulWidget {
+class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
 
   @override
@@ -23,13 +19,11 @@ class MyApp extends StatelessWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-
+  final ValueNotifier<int> counter = ValueNotifier(1);
   @override
-  
   void initState() {
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +37,22 @@ class _GameScreenState extends State<GameScreen> {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Colors.black54,
-                borderRadius: BorderRadius.circular(10)
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: const Text(
-                'Score: 1',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight:  FontWeight.bold,
-                ),
-              ),
+              child: ValueListenableBuilder<int>(
+              valueListenable: counter,
+              builder: (context, score, child) {
+                return Text(
+                  'Score: $score',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+              )
+              );
+              },
             ),
-
+          ),
           ),
           // penambahan code
           //untuk gambar icon
@@ -64,18 +62,18 @@ class _GameScreenState extends State<GameScreen> {
             child: Row(
               children: [
                 IconButton(
-                  icon: const Icon(Icons.music_note, color: Colors.black,),
-                  onPressed: (){},
+                  icon: const Icon(Icons.music_note, color: Colors.black),
+                  onPressed: () {},
                 ),
-                IconButton(icon: const Icon(Icons.volume_up, color: Colors.black),
-                  onPressed: (){},
-                   ),
+                IconButton(
+                  icon: const Icon(Icons.volume_up, color: Colors.black),
+                  onPressed: () {},
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
-          
   }
 }
