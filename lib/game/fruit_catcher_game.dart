@@ -10,5 +10,8 @@ class FruitCatcherGame extends FlameGame{
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    // Play background music
+    AudioManager().playBackgroundMusic(); // Update 
+
   }
 }

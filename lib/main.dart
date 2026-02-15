@@ -6,7 +6,7 @@ import 'package:minigame_/game/managers/audio_manager.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AudioManager().initialize();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Fruit Catcher Game',
       home: GameScreen(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
